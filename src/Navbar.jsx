@@ -1,7 +1,7 @@
 import React from 'react'
 const Navbar = () =>{
     return(
-        <nav className='bg-yellow-600 px-6 py-4 text-white shadow-md'>
+        <nav className='bg-pink-400 px-6 py-4 text-white shadow-md'>
             <div className='mx-auto flex max-w-7xl items-center justify-between'>
                 <ul className='flex items-center gap-6'>
                     <li><a href="#" className='hover:text-red-900'>Home</a></li>
