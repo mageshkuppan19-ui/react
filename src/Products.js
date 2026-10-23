@@ -65,7 +65,7 @@ export const products = [
     category: "Electronics",
     price: 99.99,
     discount: 15,
-    rating: 4.8(500),
+    rating: 4.8,
     ratingCount: 0,
     stock: 12,
     description: "Premium high-fidelity audio with active noise cancellation and 30-hour battery life.",
