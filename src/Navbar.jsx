@@ -27,6 +27,7 @@
 
 import React from 'react';
 import { ShoppingCart, Heart, Store } from 'lucide-react';
+import {Link} from 'react-router-dom';
  
 const Navbar = ({ cartCount, wishlistCount }) => {
   return (
@@ -40,7 +41,15 @@ const Navbar = ({ cartCount, wishlistCount }) => {
           <span className="text-xl font-bold tracking-tight">
             My<span className="text-blue-400">Shop</span>
           </span>
+
+          
+          
         </div>
+        <nav className="flex items-center justify-between gap-8">
+          <Link to="/home" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors duration-200">Home</Link>
+          <Link to="/about" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors duration-200">About</Link>
+          <Link to="/products" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors duration-200">Products</Link>
+        </nav>
  
         {/* Right Actions: Wishlist & Cart */}
         <div className="flex items-center gap-3">
@@ -50,10 +59,12 @@ const Navbar = ({ cartCount, wishlistCount }) => {
             title="Wishlist"
           >
             <Heart size={22} className={wishlistCount > 0 ? "fill-red-500 text-red-500" : ""} />
+            
             {wishlistCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
                 {wishlistCount}
               </span>
+              
             )}
           </div>
  
