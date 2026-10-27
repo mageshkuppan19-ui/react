@@ -70,7 +70,7 @@
 import React, { useState } from 'react';
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-import ProductCard from "./ProductCard.jsx";
+import ProductCard from "./Productcard.jsx";
 import products from "./Products.js";
  
 const App = () => {
