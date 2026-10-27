@@ -74,7 +74,9 @@
  
 // export default ProductCard;
 
-import React from 'react';
+// 
+
+import React, { useState } from 'react';
 import { Star, ShoppingCart, Heart } from 'lucide-react';
  
 const ProductCard = ({
@@ -87,7 +89,24 @@ const ProductCard = ({
   ratingCount,
   stock,
   discount,
+  onAddToCart,
+  onRemoveFromCart,
+  onWishlistToggle,
 }) => {
+  // 1. Wishlist toggle state (true / false)
+  const [isWishlisted, setIsWishlisted] = useState(false);
+ 
+  // 2. Function to toggle wishlist
+  const handleWishlistClick = () => {
+    const nextState = !isWishlisted;
+    setIsWishlisted(nextState);
+ 
+    // Update wishlist count in parent (App.jsx)
+    if (onWishlistToggle) {
+      onWishlistToggle(nextState);
+    }
+  };
+ 
   return (
     <div className="w-80 bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition group relative flex flex-col justify-between">
       <div>
@@ -99,8 +118,15 @@ const ProductCard = ({
         )}
  
         {/* Wishlist Button */}
-        <button className="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full text-gray-600 hover:text-red-500 hover:bg-white shadow-sm transition">
-          <Heart size={18} />
+        <button
+          onClick={handleWishlistClick}
+          className="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white shadow-sm transition cursor-pointer"
+          title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
+        >
+          <Heart
+            size={18}
+            className={isWishlisted ? "fill-red-500 text-red-500" : "text-gray-500"}
+          />
         </button>
  
         {/* Product Image */}
@@ -151,10 +177,23 @@ const ProductCard = ({
             <span>Out of Stock</span>
           </button>
         ) : (
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-sm">
-            <ShoppingCart size={18} />
-            <span>Add to Cart</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onAddToCart}
+              className="flex-1 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-medium py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-sm text-sm"
+            >
+              <ShoppingCart size={16} />
+              <span>Add to Cart</span>
+            </button>
+ 
+            <button
+              onClick={onRemoveFromCart}
+              className="bg-gray-100 hover:bg-red-50 hover:text-red-600 hover:border-red-200 text-gray-700 font-medium py-2.5 px-3 rounded-xl transition cursor-pointer border border-gray-200 text-sm active:scale-95"
+              title="Decrease from cart"
+            >
+              Remove
+            </button>
+          </div>
         )}
       </div>
     </div>
