@@ -180,6 +180,13 @@ const ProductCard = ({
           <div className="flex items-center gap-2">
             <button
               onClick={onAddToCart}
+              className="bg-gray-100 hover:bg-red-50 hover:text-red-600 hover:border-red-200 text-gray-700 font-medium py-2.5 px-3 rounded-xl transition cursor-pointer border border-gray-200 text-sm active:scale-95"
+              title="add from cart"
+            >
+              +
+            </button>
+            <button
+              // onClick={onAddToCart}
               className="flex-1 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-medium py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-sm text-sm"
             >
               <ShoppingCart size={16} />
@@ -191,7 +198,7 @@ const ProductCard = ({
               className="bg-gray-100 hover:bg-red-50 hover:text-red-600 hover:border-red-200 text-gray-700 font-medium py-2.5 px-3 rounded-xl transition cursor-pointer border border-gray-200 text-sm active:scale-95"
               title="Decrease from cart"
             >
-              Remove
+              -
             </button>
           </div>
         )}
